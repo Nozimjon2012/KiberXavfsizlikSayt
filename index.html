@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiberxavfsizlik - Internetda Xavfsiz Qoling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --danger: #ef4444;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: var(--secondary);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--warning);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--warning);
+            border-bottom-color: var(--warning);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)), url('https://placehold.co/1200x600/1e40af/white?text=Kiberxavfsizlik') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+
+        .btn:hover {
+            background: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card i {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>KiberXavfsizlik</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#bosh-sahifa">Bosh sahifa</a></li>
+                    <li><a href="#tahdidlar">Tahdidlar</a></li>
+                    <li><a href="#himoya">Himoya usullari</a></li>
+                    <li><a href="#aloqa">Aloqa</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="bosh-sahifa" class="hero">
+        <div class="container">
+            <h1>Internetda Xavfsiz Qoling</h1>
+            <p>Kiberxavfsizlik — bu kompyuter tizimlari, tarmoqlari, qurilmalari va ma'lumotlarni raqamli hujumlardan himoya qilish san'ati va fanidir.</p>
+            <div class="hero-buttons">
+                <a href="#tahdidlar" class="btn">Tahdidlarni bilib oling</a>
+                <a href="#himoya" class="btn btn-outline">Himoya qiling</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="tahdidlar">
+        <div class="container">
+            <h2 class="section-title">Asosiy Kiber Tahdidlar</h2>
+            <p class="content">Internetda xavfsiz bo'lish uchun duch keladigan asosiy xavflarni bilish muhimdir:</p>
+            
+            <div class="cards">
+                <div class="card">
+                    <i class="fas fa-virus"></i>
+                    <h3>Viruslar va Troynlar</h3>
+                    <p>Zararli dasturlar kompyuteringizga kirib, ma'lumotlarni o'g'irlash, yo'qotish yoki tizimni buzish mumkin.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-fish"></i>
+                    <h3>Fishing hujumlari</h3>
+                    <p>Soxta veb-saytlar yoki elektron pochta orqali foydalanuvchilarni shaxsiy ma'lumotlarini (parollar, bank ma'lumotlari) berishga undash.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-key"></i>
+                    <h3>Parol o'g'irlash</h3>
+                    <p>Kuchsiz parollar yoki bir xil paroldan bir nechta hisob uchun foydalanish orqali hisoblarga noqonuniy kirish.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="himoya" style="background-color: #f8fafc;">
+        <div class="container">
+            <h2 class="section-title">Himoya Usullari</h2>
+            <p class="content">Internetda xavfsiz bo'lish uchun quyidagi maslahatlarga amal qiling:</p>
+            
+            <div class="cards">
+                <div class="card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Kuchli parollar</h3>
+                    <p>Har bir hisob uchun noyob, murakkab parollar yarating. Parol menejeridan foydalaning.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Dasturlarni yangilang</h3>
+                    <p>Operatsion tizim va dasturlarni doim yangi versiyada saqlang — xavfsizlik teshiklarini yopish uchun.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Antivirus dasturlari</h3>
+                    <p>Ishonchli antivirus dasturlaridan foydalaning va ularni doim yangilab boring.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="aloqa">
+        <div class="container">
+            <h2 class="section-title">Biz bilan bog'laning</h2>
+            <p class="content">Savollaringiz yoki takliflaringiz bormi? Bizga xabar yuboring!</p>
+            
+            <div class="form-container">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Ismingiz</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Elektron pochta</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Xabar</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Xabar yuborish</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 KiberXavfsizlik. Barcha huquqlar himoyalangan.</p>
+            <p>Internetda xavfsiz bo'ling — bilimingizni doim yangilab boring!</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Rahmat! Xabaringiz muvaffaqiyatli yuborildi. Tez orada siz bilan bog\'lanamiz.');
+            this.reset();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
